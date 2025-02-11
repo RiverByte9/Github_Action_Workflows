@@ -19,4 +19,21 @@ jobs:
                   echo "This is multiline cmd"
                   echo "Hello this si important"
 
+    runcommandsagain:
+         runs-on: ubuntu-latest
+
+         steps:
+             - name: Checkout the code
+               uses: actions/checkout@v4
+
+             - name: Run the single command
+               run: echo "Github Action_workflows"
+
+             - name: Run the multiple commands
+               run: |
+
+                  echo "This is multiline cmd"
+                  echo "Hello...working with github actions"
+
+
 
