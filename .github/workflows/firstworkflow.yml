@@ -2,15 +2,16 @@ name: first
 on:
    push
 env: 
-    class: "Hands-on code"
-    env_Scope: "global"
+    CLASS: "Hands-on code"
+    ENV_SCOPE: "global"
     
 jobs:
     runcommands-job1:
         runs-on: ubuntu-latest
         env: 
-               class: "runcommands"
-               env_Scope: "global"
+            CLASS: "runcommands"
+            ENV_SCOPE: "global"
+            ENV_JOB: "job-level"
         steps:
             - name: Checkout the code
               uses: actions/checkout@v4
@@ -18,20 +19,20 @@ jobs:
             - name: Run the single command
               run: |
                    echo "Hello World"
-                   echo " scope: ${{ env.env_scope }}"
-                   echo " job: ${{ env.env_job }}"
-                   echo " step: ${{ env.env_step }}"
+                   echo " scope: ${{ env.ENV_SCOPE }}"
+                   echo " job: ${{ env.ENV_JOB }}"
+                   echo " step: ${{ env.ENV_STEP }}" # This will be empty because it's not defined at this level
 
             - name: Run the multiple commands
               env: 
-                  step: "checkout"
-                  env_scope: "step"
+                  ENV_STEP: "checkout"
+                  ENV_SCOPE: "step"
               run: |
-
                   echo "This is multiline cmd"
-                  echo " scope: ${{ env.env_scope }}"
-                  echo " job: ${{ env.env_job }}"
-                  echo " step: ${{ env.env_step }}"
+                  echo " scope: ${{ env.ENV_SCOPE }}"
+                  echo " job: ${{ env.ENV_JOB }}"
+                  echo " step: ${{ env.ENV_STEP }}"
+
 
     # $ {{ env.env_scope }}              
 
