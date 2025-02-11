@@ -2,32 +2,31 @@ name: first
 on:
    push
 env: 
-    class: Handsoncode
+    class: "Hands-on code"
     env_Scope: "global"
     
 jobs:
     runcommands-job1:
-         runs-on: ubuntu-latest
-         env: 
-           job: "runcommands"
-           env_Scope: "job"
-           
-         steps:
-             - name: Checkout the code
-               uses: actions/checkout@v4
+        runs-on: ubuntu-latest
+        env: 
+               class: "runcommands"
+               env_Scope: "global"
+        steps:
+            - name: Checkout the code
+              uses: actions/checkout@v4
 
-             - name: Run the single command
-               run: |
+            - name: Run the single command
+              run: |
                    echo "Hello World"
                    echo " scope: ${{ env.env_scope }}"
                    echo " job: ${{ env.env_job }}"
                    echo " step: ${{ env.env_step }}"
 
-             - name: Run the multiple commands
-               env: 
-                 step: "checkout"
-                 env_scope: "step"
-               run: |
+            - name: Run the multiple commands
+              env: 
+                  step: "checkout"
+                  env_scope: "step"
+              run: |
 
                   echo "This is multiline cmd"
                   echo " scope: ${{ env.env_scope }}"
