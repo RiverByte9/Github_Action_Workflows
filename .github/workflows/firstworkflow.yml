@@ -1,40 +1,57 @@
 name: first
 on:
    push
-
+env: 
+    class: Handsoncode
+    env_Scope: "global"
+    
 jobs:
-    runcommands:
+    runcommands-job1:
          runs-on: ubuntu-latest
-
+         env: 
+           job: "runcommands"
+           env_Scope: "job"
+           
          steps:
              - name: Checkout the code
                uses: actions/checkout@v4
 
              - name: Run the single command
-               run: echo "Hello World"
+               run: |
+                   echo "Hello World"
+                   echo " scope: ${{ env.env_scope }}"
+                   echo " job: ${{ env.env_job }}"
+                   echo " step: ${{ env.env_step }}"
 
              - name: Run the multiple commands
+               env: 
+                 step: "checkout"
+                 env_scope: "step"
                run: |
 
                   echo "This is multiline cmd"
-                  exit 1
+                  echo " scope: ${{ env.env_scope }}"
+                  echo " job: ${{ env.env_job }}"
+                  echo " step: ${{ env.env_step }}"
 
-    runcommandsagain:
-         runs-on: ubuntu-latest
-         needs: [runcommands]
+    # $ {{ env.env_scope }}              
 
-         steps:
-             - name: Checkout the code
-               uses: actions/checkout@v4
+    # runcommands-job2:
+    #      runs-on: ubuntu-latest
+    #      needs: [runcommands]
 
-             - name: Run the single command
-               run: echo "Github Action_workflows"
+    #      steps:
+    #          - name: Checkout the code
+    #            uses: actions/checkout@v4
 
-             - name: Run the multiple commands
-               run: |
+    #          - name: Run the single command
+    #            run: echo "Github Action_workflows"
 
-                  echo "This is multiline cmd"
-                  echo "Hello...working with github actions"
+    #          - name: Run the multiple commands
+    #            run: |
+
+    #               echo "This is multiline cmd"
+    #               echo "Hello...working with github actions"
 
 
 
