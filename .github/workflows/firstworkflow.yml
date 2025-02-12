@@ -3,7 +3,7 @@ on:
    push:
        branches:
                -main
-   workflow_dispatch:    
+   workflow_dispatch:     
 env:  
     CLASS: "Hands-on code"
     ENV_SCOPE: "global"
