@@ -1,10 +1,11 @@
 name: first
 
 on:
-  push
-branches:
-      -main
-workflow_dispatch:     
+  push:
+    branches:
+      - main  # Fixed spacing issue
+  workflow_dispatch:  # Placed correctly at the same level as push
+
 
 
 
