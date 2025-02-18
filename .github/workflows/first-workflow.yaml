@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  runcommands1:
+  runcommands:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +21,7 @@ jobs:
 
   runcommands2:
     runs-on: ubuntu-latest
+    needs: [runcommands]  # Corrected indentation and placement
 
     steps:
       - name: Checkout the single code
