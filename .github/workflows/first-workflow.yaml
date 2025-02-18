@@ -22,8 +22,8 @@ jobs:
         run: |
           echo "Hello World"
           echo "scope: ${{ env.env_scope }}"
-          echo "job: ${{ env_job }}"
-          echo "step: ${{ env_step }}"
+          echo "job: ${{ env.job }}"
+          echo "step: ${{ env.step }}"
 
       - name: Run the multiple commands
         env: 
@@ -32,8 +32,8 @@ jobs:
         run: |
           echo "This is multiline cmd"
           echo "scope: ${{ env.env_scope }}"
-          echo "job: ${{ env_job }}"
-          echo "step: ${{ env_step }}"
+          echo "job: ${{ env.job }}"
+          echo "step: ${{ env.step }}"
 
 
 
