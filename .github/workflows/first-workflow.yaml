@@ -1,36 +1,53 @@
-name: First Workflow
+name: first
 
 on:
   push:
 
+env:  
+  class: "Hands-on code"
+  ENV_SCOPE: "global"
+
 jobs:
-  runcommands:
+  runcommands-job1:
     runs-on: ubuntu-latest
+    env: 
+      job: "runcommands"
+      ENV_SCOPE: "job"
 
     steps:
-      - name: Checkout the single code
-        uses: actions/checkout@v2
+      - name: Checkout the code
+        uses: actions/checkout@v4
 
-      - name: Run a command
-        run: echo "Hello World..!"
-
-      - name: Run a multiline command
+      - name: Run the single commands
         run: |
-          echo "this is a multiline command"
-          exit 1
+          echo "Hello World"
+          echo "scope: ${{ env.ENV_SCOPE }}"
+          echo "job: ${{ env.ENV_JOB }}"
+          echo "step: ${{ env.ENV_STEP }}"
 
-  runcommands2:
-    runs-on: ubuntu-latest
-    needs: [runcommands]  # Corrected indentation and placement
-
-    steps:
-      - name: Checkout the single code
-        uses: actions/checkout@v2
-
-      - name: Run a command
-        run: echo "Hello World..!"
-
-      - name: Run a multiline command
+      - name: Run the multiple commands
+        env: 
+          ENV_STEP: "checkout"
+          ENV_SCOPE: "step"
         run: |
-          echo "this is a multiline command"
-          echo "working with GitHub Action workflows"
+          echo "This is multiline cmd"
+          echo "scope: ${{ env.ENV_SCOPE }}"
+          echo "job: ${{ env.ENV_JOB }}"
+          echo "step: ${{ env.ENV_STEP }}"
+
+
+  # runcommands2-job2:
+  #   runs-on: ubuntu-latest
+  #   needs: [runcommands]  # Corrected indentation and placement
+
+  #   steps:
+  #     - name: Checkout the single code
+  #       uses: actions/checkout@v2
+
+  #     - name: Run a command
+  #       run: echo "Hello World..!"
+
+  #     - name: Run a multiline command
+  #       run: |
+  #         echo "this is a multiline command"
+  #         echo "working with GitHub Action workflows"
