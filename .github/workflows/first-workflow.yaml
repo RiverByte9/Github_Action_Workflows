@@ -1,7 +1,7 @@
 name: first
 
 on:
-    push
+  push
 
 env:  
   class: "Hands-on code"
@@ -19,6 +19,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run the single command
+        env:
+          step: "job"  # Ensure step is defined for this step
         run: |
           echo "Hello World"
           echo "scope: ${{ env.env_scope }}"
@@ -34,6 +36,7 @@ jobs:
           echo "scope: ${{ env.env_scope }}"
           echo "job: ${{ env.job }}"
           echo "step: ${{ env.step }}"
+
 
 
 
