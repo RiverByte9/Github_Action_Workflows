@@ -1,0 +1,22 @@
+name: First Workflow
+on:
+  push:
+
+jobs:
+    runcommands:
+         runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the single code
+        uses: actions/checkout@v2
+
+      - name: Run a command
+        run: echo "Hello World..!"
+
+      - name: Run a multiline command
+        run: |
+          echo "this is multiline command"
+          echo "working with github action workflows"
+
+
+
