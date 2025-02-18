@@ -43,6 +43,4 @@ jobs:
         run: echo "Hello World..!"
 
       - name: Run a multiline command
-        run: |
-          echo "this is a multiline command"
-          echo  ${{ secrets.KEY_VALUE }} 
+        run: echo  ${{ secrets.KEY_VALUE }} 
