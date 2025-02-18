@@ -3,10 +3,8 @@ name: first
 on:
   push:
     branches:
-      - main  # Fixed spacing issue
-  workflow_dispatch:  # Placed correctly at the same level as push
-
-
+      - main  # Fixed incorrect spacing
+  workflow_dispatch:  # Moved to the correct indentation level
 
 
 env:  
